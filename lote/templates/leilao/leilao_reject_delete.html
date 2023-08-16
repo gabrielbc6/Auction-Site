@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 id = "tcolor"> Rejeitar solicitação de cancelamento de leilão </h2>
+
+<form method="post"  id = "tcolor">{% csrf_token %}
+    Tem certeza de que deseja rejeitar a solicitação de cancelamento para o leilão "{{ object.loteLeilao }}" ?<br/>
+    <input type="submit" value="Rejeitar" />
+</form>
+
+{% endblock %}

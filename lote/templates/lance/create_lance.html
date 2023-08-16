@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<div class="container mx-auto mt-4">
+<h2 style="text-align: center;">
+    Entre com o lance:
+</h2>
+<br>
+{% if atual == 0 %}
+<p style="text-align: center;">Não há lances ainda para este produto.</p>
+{% else %}
+<p style="text-align: center;">Lance atual: {{atual}}</p>
+{% endif %}
+<p style="text-align: center;">Valor mínimo do próximo lance: {{minimo}}</p>
+<br>
+<br>
+<form style="text-align: center;" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-outline-dark mt-auto" type="submit" value="Submit" />
+</form>
+</div>
+{% endblock %}

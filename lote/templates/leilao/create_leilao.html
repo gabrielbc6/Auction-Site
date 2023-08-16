@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<h2 style="text-align: center;">Informações do lote</h2>
+<br>
+<div class="list-group" style="align-items: center;">
+    <ul>
+        <li>Nome: {{lote.nome}}</li>
+        <li>Descrição: {{lote.descricao}}</li>
+        <li>Estado: {{lote.estado}}</li>
+        <li>Valor de reserva: {{lote.valorReserva}}</li>
+    </ul>
+</div>
+<br>
+<h2 style="text-align: center;">
+    Registre o leilão
+</h2>
+<br>
+<form style="text-align: center; margin-right: 40vw; text-align: right" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Confirmar pagamento da taxa de compra referente ao Leilao {{leilao.id}} - {{leilao.loteLeilao}}</h2>
+
+<ul>
+    <li>Valor do lance vencedor: {{leilao.maiorLance}}</li>
+    <li>Valor do pagamento: {{pagamento.valor}}</li> <br>
+    <li>Efetuador: {{pagamento.efetuador}}</li>
+</ul>
+
+<form method="post"  id = "tcolor">{% csrf_token %}
+    <input type="submit" value="Confirmar Pagamento" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-4">
+<h2 id = "tcolor"> Finalizar leilão</h2>
+
+<form method="post"  id = "tcolor">{% csrf_token %}
+    Tem certeza de que deseja finalizar leilão de "{{ object.loteLeilao }}" ?<br/>
+    <input type="submit" value="Finalizar" />
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto mt-4">
+<h2>{{lote.nome}}</h2>
+
+<p>Período do leilão: {{leilao.inicioLeilao}} até {{leilao.finalLeilao}}</p>
+
+{% if leilao.finalizado %}
+    <p>Leilão finalizado.</p>
+{% elif leilao.liberado %}
+    <p>Leilão aberto.</p>
+{% else %}
+    <p>Leilão em espera.</p>
+{% endif %}
+
+<h4>Informações</h4>
+<ul class="list-group">
+    <li class="list-group-item">Descrição: {{lote.descricao}}</li>
+    <li class="list-group-item">Estado: {{lote.estado}}</li>
+    <li class="list-group-item">Vendedor: {{lote.vendedor}}</li>
+    <li class="list-group-item">Valor minimo entre lances: {{lote.valorMinimoLance}}</li>
+</ul>
+<p>Maior Lance:</p>
+{% if leilao.maiorLance %}
+<span>{{leilao.maiorLance}}</span>
+{% else %}
+<span>Ainda não há lances para este leilão</span>
+{% endif %}
+
+<div class="text-center"><button class="btn btn-outline-dark mt-auto" {% if not leilao.liberado %}disabled{% endif %}><a style="text-decoration: none; color: black;" href="{% url 'lote:create_lance' leilao.id %}" >Novo Lance</a></button></div>
+{% if request.user.is_superuser %}
+<button class="btn btn-outline-dark mt-auto"><a style="text-decoration: none; color: black;" href="{% url 'lote:leilao_finalize' leilao.id %}">Finalizar Leilão</a></button>
+{% endif %}
+
+</div>
+{% endblock %}
